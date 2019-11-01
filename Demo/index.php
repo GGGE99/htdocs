@@ -22,6 +22,7 @@ if(isset($_POST['post'])){
 				<?php 
 				echo "Posts: " . $user['num_posts'] . "<br>"; 
 				echo "Likes" . $user['num_likes'];
+				echo "FUCK OFF!";
 				?>
 			</div>
 		</div>
