@@ -8,7 +8,7 @@
 
 <h1>My first PHP page</h1>
 
-<a href="Demo/index.php">Home</a>
+<a href="Social/index.php">Home</a>
 
 </body>
-</html> 
+</html>

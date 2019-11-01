@@ -49,7 +49,7 @@ if(isset($_SESSION['username'])) {
 			<a href="#">
 				<i class="fas fa-cogs"></i>
 			</a>	
-			<a href="#">
+			<a href="includes/handlers/logout.php">
 				<i class="fas fa-sign-out-alt"></i>
 			</a>
 		</nav>

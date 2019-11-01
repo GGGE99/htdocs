@@ -43,14 +43,14 @@ nav {
 	float: right;
 	right: 1px;
 	position: absolute;
-	margin: 0 10 10 10;
+	margin: 5 10 10 10;
 }
 
 nav a {
-	position: relative;
-	color: #fff;
 	text-decoration: none;
-	font-size: 30px;
+	color: #fff;
+	font-size: 30;
+	position: relative;
 }
 
 nav a:hover {
@@ -136,4 +136,21 @@ textarea {
 
 .post_form input[type="submit"]:active {
 	padding: 5px 4px 4px 5px;
+}
+
+.status_post {
+	width: 96%;
+	font-size: 15px;
+	padding: 0px 5px;
+	min-height: 75;
+}
+
+.post_profile_pic {
+	float: left;
+	margin-right: 7px;
+}
+
+.post_profile_pic img{
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px #6f6c6ce0;
 }
