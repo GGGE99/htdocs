@@ -99,9 +99,10 @@ if(isset($_POST['register_button'])) {
 		//If username exists add number to username
 		while(mysqli_num_rows($check_username_query) != 0) {
 			$i++;
-			$username = $username . "_" . $i;
-			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username ='$username'");
+			$temp_username = $username . "_" . $i;
+			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username ='$temp_username'");
 		}
+		$username = $temp_username;
 
 		//Profile picture assignment
 		$rand = rand(1, 2);
