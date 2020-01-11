@@ -17,8 +17,10 @@
         $state = $_GET['state'];
         $ip = $_SERVER['REMOTE_ADDR'];
         $now = date("F j, Y, g:i a");
+        $data = file_get_contents('https://ipinfo.io/'.$ip.'/json');
+        $json = json_decode($data, 1);
 
-        $message = $state.'-'.$ip.'-'.$now."\r\n";
+        $message = $state.'-'.$json['city'].','.$json['region']'-'.$now."\r\n";
         fwrite($fp, $message);
         fclose($fp);
     }
