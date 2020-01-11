@@ -7,10 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="light.css">
 
     <title>Test</title>
   </head>
   <body>
+      
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
@@ -19,6 +21,7 @@
                         <div id="light"></div>
                     </span>
                 </h1>
+
                 <button type="button" id="toggle" data-state="1" class="btn-danger">Toggle</button>
             </div>
 
@@ -49,14 +52,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script>
+        function current_state(){
+            btn = $('#toggle');
+            light = $('#light');
 
+            $.ajax({
+                url: 'toggle.php?current',
+                method: 'get',
+                success: function(data){
+                    if(data == 1){
+                        btn.data('state', '0');
+                        light.addClass('on');
+                        light.removeClass('off');
+                        btn.addClass('btn-danger');
+                        btn.removeClass('btn-success');
+                        btn.html('Turn Off');
+                    } else {
+                        btn.data('state', '1');
+                        light.addClass('off');
+                        light.removeClass('on');
+                        btn.addClass('btn-success');
+                        btn.removeClass('btn-danger');
+                        btn.html('Turn On');
+                    }
+                }
+            });
+        }
         $(document).ready(function(){
 
-            function current_state(){
-                btn = $('toggle');
-                light = $('light');
+            current_state();
 
-            }
+            setInterval(current_state, 1000);
 
             $('#toggle').click(function(){
                 var current = $(this).data('state');
