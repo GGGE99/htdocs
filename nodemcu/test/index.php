@@ -12,7 +12,7 @@
     <title>Test</title>
   </head>
   <body>
-      
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
@@ -40,6 +40,9 @@
                             </th>
                         </tr>
                     </thead>
+                    <tbody id="log">
+
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -55,6 +58,7 @@
         function current_state(){
             btn = $('#toggle');
             light = $('#light');
+            log = $('#log');
 
             $.ajax({
                 url: 'toggle.php?current',
@@ -76,6 +80,30 @@
                         btn.html('Turn On');
                     }
                 }
+            });
+
+
+                $.ajax({
+                    url: 'toggle.php?log',
+                    method: 'get',
+                    success: function(data){
+                        var lines = data.split('\n');
+                        lines.reverse();
+                        var result = '';
+
+                        for(var i = 0; i < lines.length; i++){
+                            if(lines[i] != ''){
+                                var cells = lines[i].split('-');
+                                row = '<tr>';
+                                for (var x = 0; x < cells.length; x++) {
+                                    row = row + '<td>' + cells[x] + '</td>';
+                                }
+                                row = row + '</tr>';
+                                result = result + row;
+                            }
+                        }
+                        log.html(result);
+                    }
             });
         }
         $(document).ready(function(){

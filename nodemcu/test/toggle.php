@@ -7,6 +7,12 @@
         fclose($fp);
     }
 
+    if (isset($_GET['log'])) {
+        $file = "log.txt";
+        $fp = fopen($file, "r") or die("Not good - coukd not open");
+        echo fread($fp, filesize("log.txt"));
+        fclose($fp);
+    }
 
     if(isset($_GET['state'])) {
         $fp = fopen("data.txt", "w") or die("failed, man");
