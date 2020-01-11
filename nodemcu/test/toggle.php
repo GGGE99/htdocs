@@ -20,7 +20,7 @@
         $data = file_get_contents('https://ipinfo.io/'.$ip.'/json');
         $json = json_decode($data, 1);
 
-        $message = $state.'-'.$json['city'].','.$json['region']'-'.$now."\r\n";
+        $message = $state.'-'.$json['city'].','.$json['region'].'-'.$now."\r\n";
         fwrite($fp, $message);
         fclose($fp);
     }
